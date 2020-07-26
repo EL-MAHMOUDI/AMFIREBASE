@@ -1,0 +1,57 @@
+<form [formGroup]="service.form" class="normal-form">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="controls-container">
+                <input type="hidden" formControlName="$key">
+                <mat-form-field>
+                    <input formControlName="fullName" matInput placeholder="Full Name*">
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="email" matInput placeholder="Email">
+                    <mat-error>Invalid email adress.</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="mobile" matInput placeholder="Mobile*">
+                    <mat-error *ngIf="service.form.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
+                    <mat-error *ngIf="service.form.controls['mobile'].errors?.minlength">Minimum 8 chatacters needed.</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="city" matInput placeholder="City">
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="controls-container">
+                <div class="add-bottom-padding">
+                    <mat-radio-group formControlName="gender">
+                    <mat-radio-button *ngFor="let gender of genders" [value]="gender">
+                      {{gender}}
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                  <mat-form-field>
+                    <mat-label>Department</mat-label>
+                    <mat-select formControlName = "department">
+                      <mat-option *ngFor="let department of departments" [value]="department">
+                        {{department}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Hire Date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="hireDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  <div style="padding-top: 10px;">
+                    <mat-checkbox formControlName="isPermanent">Permanent Employee</mat-checkbox>
+                  </div>
+                  <div class="button-row">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid" (click)="onSubmit()">Submit</button>
+                    <button mat-raised-button color="warn" (click)="onClear()" [disabled]="service.form.pristine">Clear</button>
+                  </div>
+            </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+</form>
