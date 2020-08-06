@@ -33,4 +33,7 @@ export class EmployeeComponent implements OnInit {
     this.service.form.reset();
   }
 
+  onCancel(){
+    this.dialogRef.close();
+  }
 }

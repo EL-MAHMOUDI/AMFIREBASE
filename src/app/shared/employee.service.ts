@@ -17,7 +17,6 @@ export class EmployeeService {
     department: new FormControl(0),
     hireDate: new FormControl(''),
     isPermanent: new FormControl(false)
-
   });
   employeeList: AngularFireList<any>;
   constructor(private firebase: AngularFireDatabase) { }

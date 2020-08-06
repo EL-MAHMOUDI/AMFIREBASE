@@ -1,3 +1,10 @@
+<mat-toolbar color="primary">
+  <span>Employee</span>
+  <span class="spacer"></span>
+  <button mat-icon-button tabindex="-1" (click)="onCancel()">
+    <mat-icon>cancel</mat-icon>
+  </button>
+</mat-toolbar>
 <form [formGroup]="service.form" class="normal-form">
     <mat-grid-list cols="2" rowHeight="300px">
         <mat-grid-tile>

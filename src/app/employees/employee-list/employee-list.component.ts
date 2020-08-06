@@ -29,6 +29,7 @@ export class EmployeeListComponent implements OnInit {
           };
         }
         );
+        console.log(array);
         this.listData = new MatTableDataSource(array);
         this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
@@ -53,5 +54,12 @@ export class EmployeeListComponent implements OnInit {
     dialogConfig.width = "60%";
     this.dialog.open(EmployeeComponent, dialogConfig);
   }
-
+ onEdit(){
+  this.employeeService.form.reset();
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = "60%";
+  this.dialog.open(EmployeeComponent, dialogConfig);
+ }
 }
